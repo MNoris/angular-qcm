@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-ng-app="ServicesApp" ng-cloak>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<title>Connexion</title>
+</head>
+<body data-ng-controller="ServicesController">
+<form id="services" class="img-rounded">
+
+	<h1>Services</h1>
+	<div class="alert alert-info">
+	<span>Choisissez les éléments à inclure</span>
+		<p>
+		<ng-pluralize count="count" when="{0:'Aucun service sélectionné',
+											1:'1 service sélectionné',
+											'other':'{} services sélectionné'}"></ng-pluralize>
+		</p>
+	</div>
+	<ul>
+		<li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+			{{service.name}} <span>{{service.price | currency}}</span>
+		</li>
+	</ul>
+
+	<div class="total">
+		<!-- Format en currency. -->
+		Total: <span>{{total() | currency}}</span>
+	</div>
+</form></code></pre>
+</body>
+<script src="lib/angular.min.js"></script>
+<script src="lib/fr.js"></script>
+<script type="text/javascript" src="js/servicesController.js"></script>
+</html>
